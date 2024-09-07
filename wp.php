@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shiki Highlighter</title>
-
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=VT323&display=swap');
 
@@ -60,20 +60,15 @@
         }
         body.dark code {
             background: transparent;
-        }
+        }        
     </style>
 
 </head>
 <body>
-    <h1>Shiki Highlighter</h1>
-
-    <?php // get_search_form(); ?>
-
+    <h1>Shiki Highlighter</h1>    
     <div id="foo"></div>
     <button onclick="document.body.classList.toggle('dark')" class="btn-toggle">Toggle theme</button>
     
-    <!-- <script src=" https://cdn.jsdelivr.net/npm/use-shiki@1.0.0/dist/index.cjs.min.js "></script> -->
-     
 <script type="module">
     // be sure to specify the exact version
     import { codeToHtml } from 'https://esm.sh/shiki@1.0.0'
