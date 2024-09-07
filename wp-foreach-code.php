@@ -33,20 +33,29 @@
             cursor: pointer;
         }
 
-        code {            
+        .code {            
             display: inline-block;            
-            width: 100%;
-            min-height: 100px;
-            padding: 20px;
+            padding: 0px;
+            margin-bottom: 20px;
             box-sizing: border-box;
-            border-radius: 10px;
+            border-radius: 20px;
             font-family: "VT323", system-ui;
             font-family: "JetBrains Mono", system-ui;            
+            border: 5px solid #dbd7ca66;
+        }
+
+        code {
+            display: inline-block;            
+            padding: 0px 20px;
+            width: 100%;
+            min-height: 100px;
+            box-sizing: border-box;
+            border-radius: 20px;
             background: #dbd7ca33;
         }
+
         pre {
             border-radius: 20px;
-            border: 10px solid #fbfbfb;    
         }
 
         body.dark .shiki,
@@ -70,7 +79,7 @@
 
 <h2>Example 1</h2>
 
-<div class="code" data-lang="php"><?php 
+<code class="code" data-lang="php"><?php 
 echo htmlentities("<?php
 
 namespace App\Http\Controllers;
@@ -93,11 +102,11 @@ class UserController extends Controller
 }
 "); 
 ?>
-</div>
+</code>
 
 <h2>Example 2</h2>
 
-<div class="code" data-lang="js"><?php echo htmlentities("const { createApp, ref } = Vue
+<code class="code" data-lang="js"><?php echo htmlentities("const { createApp, ref } = Vue
 
 createApp({
     setup() {
@@ -107,10 +116,28 @@ createApp({
         }
     }
 }).mount('#app')
-"); ?>
-</div>
 
-    <button onclick="document.body.classList.toggle('dark')" class="btn-toggle">Toggle theme</button>
+<script>alert('Hello booo')</script>
+"); ?>
+</code>
+
+<h2>Example 3</h2>
+
+<code class="code" data-lang="php">&#x3C;?php
+&#x9;echo &#x22;Hello&#x22;;
+
+&#x9;class Home {
+&#x9;&#x9;function dojob($place) {
+&#x9;&#x9;&#x9;return $place;
+&#x9;&#x9;}
+&#x9;}
+
+&#x9;$h = new Home();
+&#x9;echo $h-&#x3E;dojob(&#x27;miasto&#x27;);
+?&#x3E
+</code>
+
+<button onclick="document.body.classList.toggle('dark')" class="btn-toggle">Toggle theme</button>
 
 <script type="module">
     // be sure to specify the exact version
@@ -118,7 +145,7 @@ createApp({
     // import { codeToHtml } from 'https://esm.run/shiki@1.0.0'
     
     // Code
-    document.querySelectorAll('.code').forEach(async (i) => {
+    document.querySelectorAll('code').forEach(async (i) => {
         i.innerHTML = await codeToHtml(decodeHtml(i.innerHTML), {
             // theme: 'vitesse-light',
             lang: i.dataset.lang ?? 'php',
