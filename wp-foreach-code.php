@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shiki Highlighter</title>
+    <title>Shiki Highlighter</title>   
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=VT323&display=swap');
@@ -141,30 +141,31 @@ createApp({
 
     <button onclick="document.body.classList.toggle('dark')" class="btn-toggle">Toggle theme</button>
 
-<script type="module">
-    // be sure to specify the exact version
-    import { codeToHtml } from 'https://esm.sh/shiki@1.0.0'    
-    // import { codeToHtml } from 'https://esm.run/shiki@1.0.0'
-    
-    // Code
-    document.querySelectorAll('code').forEach(async (i) => {
-        i.innerHTML = await codeToHtml(decodeHtml(i.innerHTML), {
-            // theme: 'vitesse-light',
-            lang: i.dataset.lang ?? 'php',
-            themes: {
-                light: 'vitesse-light',
-                dark: 'vitesse-dark'
-            },
-            defaultColor: 'light',
+    <script type="module">
+        // be sure to specify the exact version
+        import { codeToHtml } from 'https://esm.sh/shiki@1.16.2'
+        // import { codeToHtml } from 'https://esm.run/shiki@1.16.2'
+        
+        // Code
+        document.querySelectorAll('code').forEach(async (i) => {
+            i.innerHTML = await codeToHtml(decodeHtml(i.innerHTML), {
+                // theme: 'vitesse-light',
+                lang: i.dataset.lang ?? 'php',
+                themes: {
+                    light: 'vitesse-light',
+                    dark: 'everforest-dark'
+                    // dark: 'vitesse-dark',
+                },
+                defaultColor: 'light',
+            })
         })
-    })
 
-    function decodeHtml(html) {
-        var txt = document.createElement("textarea");
-        txt.innerHTML = html;
-        return txt.value;
-    }
-</script>
+        function decodeHtml(html) {
+            var txt = document.createElement("textarea");
+            txt.innerHTML = html;
+            return txt.value;
+        }
+    </script>
     
 </body>
 </html>
