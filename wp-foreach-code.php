@@ -35,7 +35,7 @@
 
         .code {            
             display: inline-block;            
-            padding: 0px;
+            padding: 0px !important;
             margin-bottom: 20px;
             box-sizing: border-box;
             border-radius: 20px;
@@ -45,8 +45,9 @@
         }
 
         code {
+            font-size: 16px;
             display: inline-block;            
-            padding: 0px 20px;
+            padding: 20px;
             width: 100%;
             min-height: 100px;
             box-sizing: border-box;
@@ -55,6 +56,7 @@
         }
 
         pre {
+            margin: 0px;
             border-radius: 20px;
         }
 
@@ -67,7 +69,7 @@
             font-weight: var(--shiki-dark-font-weight) !important;
             text-decoration: var(--shiki-dark-text-decoration) !important;
         }
-        body.dark code {
+        body.dark code, body.dark .code {
             background: transparent;
         }
     </style>
@@ -137,7 +139,7 @@ createApp({
 ?&#x3E
 </code>
 
-<button onclick="document.body.classList.toggle('dark')" class="btn-toggle">Toggle theme</button>
+    <button onclick="document.body.classList.toggle('dark')" class="btn-toggle">Toggle theme</button>
 
 <script type="module">
     // be sure to specify the exact version
