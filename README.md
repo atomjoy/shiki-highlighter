@@ -69,26 +69,21 @@ Shiki code highlighter example php, js with cdn and wordpress.
         }
     </style>
 
+    <!-- <script src=" https://cdn.jsdelivr.net/npm/use-shiki@1.0.0/dist/index.cjs.min.js "></script> -->
 </head>
 <body>
     <h1>Shiki Highlighter</h1>
-
-    <?php // get_search_form(); ?>
-
     <div id="foo"></div>
     <button onclick="document.body.classList.toggle('dark')" class="btn-toggle">Toggle theme</button>
-    
-    <!-- <script src=" https://cdn.jsdelivr.net/npm/use-shiki@1.0.0/dist/index.cjs.min.js "></script> -->
-     
+
 <script type="module">
     // be sure to specify the exact version
     import { codeToHtml } from 'https://esm.sh/shiki@1.0.0'
-    // or
     // import { codeToHtml } from 'https://esm.run/shiki@1.0.0'
 
     const foo = document.getElementById('foo')
     foo.innerHTML = await codeToHtml(`<?php 
-echo addslashes("<?php
+    echo addslashes("<?php
 
 namespace App\Http\Controllers;
 
@@ -109,7 +104,7 @@ class UserController extends Controller
     }
 }
 "); 
-?>`, {
+?>`, {        
         lang: 'php',
         // theme: 'vitesse-light',
         themes: {
