@@ -4,7 +4,8 @@ Shiki code highlighter example php, js with cdn and wordpress.
 
 ## Code
 
-<https://github.com/atomjoy/shiki-highlighter/blob/main/wp.php>
+- <https://github.com/atomjoy/shiki-highlighter/blob/main/wp.php>
+- <https://github.com/atomjoy/shiki-highlighter/blob/main/wp-foreach-code.php>
 
 ## Toggle theme
 
