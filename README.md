@@ -1,9 +1,10 @@
-# Shiki Highlighter Php
+# Shiki Highlighter in Html, Php
 
 Shiki code highlighter example html, php, js with cdn and wordpress.
 
 ## Code
 
+- <https://github.com/atomjoy/shiki-highlighter/blob/main/shiki-highlighter.html>
 - <https://github.com/atomjoy/shiki-highlighter/blob/main/wp.php>
 - <https://github.com/atomjoy/shiki-highlighter/blob/main/wp-foreach-code.php>
 
