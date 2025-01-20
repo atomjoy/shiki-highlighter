@@ -47,7 +47,7 @@ Shiki code highlighter example html, php, js with cdn and wordpress.
 
         :root {
             --shiki-dark: #dbd7ca;
-            --shiki-dark-bg: #f23;
+            --shiki-dark-bg: #131313;
         }
 
         body {
@@ -100,8 +100,8 @@ Shiki code highlighter example html, php, js with cdn and wordpress.
             border-radius: 5px;
             font-family: "VT323", system-ui;
             font-family: "JetBrains Mono", consolas, system-ui;
-            background-color: #dbd7caee;
-            background-color: #f6f6f6;
+            background-color: #dbd7ca66;
+            /* background-color: #f6f6f6; */
             overflow: auto;
             scrollbar-width: thin;
         }
@@ -132,17 +132,30 @@ Shiki code highlighter example html, php, js with cdn and wordpress.
 
     <h1>How to get the first error from Request Validation in Laravel</h1>
 
-    <p>Jeżeli chcesz wyświetlić tylko pojedyńczy błąd validacji danych wejściowych użyj parametru bail.</p>
+    <p>Jeżeli chcesz wyświetlić tylko pojedyńczy błąd walidacji danych wejściowych użyj parametru bail.</p>
     <div id="c1"></div>
 
-    <p>Wyświetlaj tylko pojedyńczy błąd validacji z FormRequest.</p>
+    <p>Wyświetlaj tylko pojedyńczy błąd walidacji z FormRequest.</p>
     <div id="c2"></div>
 
     <script type="module">
-        import { codeToHtml } from 'https://esm.sh/shiki@2.0.1'
-        // import { codeToHtml } from 'https://esm.run/shiki@2.0.1'
+        import { codeToHtml } from 'https://esm.sh/shiki@v2.0.1'
+        // import { codeToHtml } from 'https://esm.run/shiki@v2.0.1'
 
-        document.getElementById('c1').innerHTML = await codeToHtml(`<?php
+        async function textToCode(code, id = 'c1', lang = 'php') {
+            document.getElementById(id).innerHTML = await codeToHtml(code, {
+                lang: lang,
+                // theme: 'vitesse-light',
+                themes: {
+                    light: 'vitesse-light',
+                    dark: 'vitesse-dark'
+                },
+                defaultColor: 'light',
+            });
+        }
+
+
+        textToCode(`<?php
 
 class UserController extends Controller {
 
@@ -151,17 +164,10 @@ class UserController extends Controller {
             'avatar' => 'bail|required|image|mimes:png|max:2048|dimensions:max_width=256,max_height=256',
         ]);
     }
-}`, {
-            lang: 'php',
-            // theme: 'vitesse-light',
-            themes: {
-                light: 'vitesse-light',
-                dark: 'vitesse-dark'
-            },
-            defaultColor: 'light',
-        });
+}`, 'c1', 'php');
 
-        document.getElementById('c2').innerHTML = await codeToHtml(`<?php
+
+        textToCode(`<?php
 
 class UploadRequest extends FormRequest {
 
@@ -176,15 +182,7 @@ class UploadRequest extends FormRequest {
             'avatar' => 'required|image|mimes:png|max:2048|dimensions:max_width=512,max_height=512',
         ];
     }
-}`, {
-            lang: 'php',
-            // theme: 'vitesse-light',
-            themes: {
-                light: 'vitesse-light',
-                dark: 'vitesse-dark'
-            },
-            defaultColor: 'light',
-        });
+}`, 'c2', 'php');
     </script>
 
     <p><a href="https://textmate-grammars-themes.netlify.app/?theme=github-light&grammar=javascript" target="_blank">Theme styles</a></p>
