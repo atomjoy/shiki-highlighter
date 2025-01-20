@@ -25,7 +25,7 @@
 
         :root {
             --shiki-dark: #dbd7ca;
-            --shiki-dark-bg: #f23;
+            --shiki-dark-bg: #131313;
         }
 
         body {
@@ -78,8 +78,8 @@
             border-radius: 5px;
             font-family: "VT323", system-ui;
             font-family: "JetBrains Mono", consolas, system-ui;
-            background-color: #dbd7caee;
-            background-color: #f6f6f6;
+            background-color: #dbd7ca66;
+            /* background-color: #f6f6f6; */
             overflow: auto;
             scrollbar-width: thin;
         }
@@ -110,15 +110,15 @@
 
     <h1>How to get the first error from Request Validation in Laravel</h1>
 
-    <p>Jeżeli chcesz wyświetlić tylko pojedyńczy błąd validacji danych wejściowych użyj parametru bail.</p>
+    <p>Jeżeli chcesz wyświetlić tylko pojedyńczy błąd walidacji danych wejściowych użyj parametru bail.</p>
     <div id="c1"></div>
 
-    <p>Wyświetlaj tylko pojedyńczy błąd validacji z FormRequest.</p>
+    <p>Wyświetlaj tylko pojedyńczy błąd walidacji z FormRequest.</p>
     <div id="c2"></div>
 
     <script type="module">
-        import { codeToHtml } from 'https://esm.sh/shiki@1.0.0'
-        // import { codeToHtml } from 'https://esm.run/shiki@1.0.0'
+        import { codeToHtml } from 'https://esm.sh/shiki@v2.0.1'
+        // import { codeToHtml } from 'https://esm.run/shiki@v2.0.1'
 
         document.getElementById('c1').innerHTML = await codeToHtml(`<?php
 
