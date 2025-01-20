@@ -120,7 +120,20 @@
         import { codeToHtml } from 'https://esm.sh/shiki@v2.0.1'
         // import { codeToHtml } from 'https://esm.run/shiki@v2.0.1'
 
-        document.getElementById('c1').innerHTML = await codeToHtml(`<?php
+        async function textToCode(code, id = 'c1', lang = 'php') {
+            document.getElementById(id).innerHTML = await codeToHtml(code, {
+                lang: lang,
+                // theme: 'vitesse-light',
+                themes: {
+                    light: 'vitesse-light',
+                    dark: 'vitesse-dark'
+                },
+                defaultColor: 'light',
+            });
+        }
+
+
+        textToCode(`<?php
 
 class UserController extends Controller {
 
@@ -129,17 +142,10 @@ class UserController extends Controller {
             'avatar' => 'bail|required|image|mimes:png|max:2048|dimensions:max_width=256,max_height=256',
         ]);
     }
-}`, {
-            lang: 'php',
-            // theme: 'vitesse-light',
-            themes: {
-                light: 'vitesse-light',
-                dark: 'vitesse-dark'
-            },
-            defaultColor: 'light',
-        });
+}`, 'c1', 'php');
 
-        document.getElementById('c2').innerHTML = await codeToHtml(`<?php
+
+        textToCode(`<?php
 
 class UploadRequest extends FormRequest {
 
@@ -154,15 +160,7 @@ class UploadRequest extends FormRequest {
             'avatar' => 'required|image|mimes:png|max:2048|dimensions:max_width=512,max_height=512',
         ];
     }
-}`, {
-            lang: 'php',
-            // theme: 'vitesse-light',
-            themes: {
-                light: 'vitesse-light',
-                dark: 'vitesse-dark'
-            },
-            defaultColor: 'light',
-        });
+}`, 'c2', 'php');
     </script>
 
     <p><a href="https://textmate-grammars-themes.netlify.app/?theme=github-light&grammar=javascript" target="_blank">Theme styles</a></p>
