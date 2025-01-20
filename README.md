@@ -138,8 +138,8 @@ Shiki code highlighter example html, php, js with cdn and wordpress.
     <div id="c2"></div>
 
     <script type="module">
-        import { codeToHtml } from 'https://esm.sh/shiki@1.0.0'
-        // import { codeToHtml } from 'https://esm.run/shiki@1.0.0'
+        import { codeToHtml } from 'https://esm.sh/shiki@2.0.1'
+        // import { codeToHtml } from 'https://esm.run/shiki@2.0.1'
 
         document.getElementById('c1').innerHTML = await codeToHtml(`<?php
 
