@@ -32,7 +32,7 @@ Shiki code highlighter example in javascript. How to use the modern syntax highl
         @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=VT323&display=swap');
 
         :root {
-            /* does not metter here plugin get it from theme style */
+            /* doesn't matter here plugin get it from theme style */
             --shiki-dark: #dbd7ca;
             --shiki-dark-bg: #131313;
             --shiki-dim: #2e3440;
