@@ -172,7 +172,9 @@ Shiki code highlighter example in javascript. How to use modern syntax highlight
         import { codeToHtml } from 'https://esm.sh/shiki@v2.0.1'
 
         async function textToCode(code, id = 'c1', lang = 'php') {
-            document.getElementById(id).innerHTML = await codeToHtml(code, {
+            // Highlight
+            let el = document.getElementById(id)
+            el.innerHTML = await codeToHtml(code, {
                 lang: lang,
                 themes: {
                     light: 'vitesse-light',
@@ -181,6 +183,18 @@ Shiki code highlighter example in javascript. How to use modern syntax highlight
                 },
                 defaultColor: 'light',
             });
+
+            // Copy to clipboard
+            let cp = document.createElement("div")
+            cp.classList.add('codecopy')
+            cp.innerText = 'copy'
+            cp.dataset.code = code
+            cp.addEventListener('click', () => {
+                let c = cp.dataset.code
+                navigator.clipboard.writeText(c)
+                alert('Copied to clipboard')
+            })
+            el.appendChild(cp)
         }
 
 
