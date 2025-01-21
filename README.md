@@ -5,8 +5,6 @@ Shiki code highlighter example in javascript. How to use modern syntax highlight
 ## Code
 
 - <https://github.com/atomjoy/shiki-highlighter/blob/main/shiki-highlighter.html>
-- <https://github.com/atomjoy/shiki-highlighter/blob/main/wp.php>
-- <https://github.com/atomjoy/shiki-highlighter/blob/main/wp-foreach-code.php>
 
 ## Toggle theme
 
