@@ -1,6 +1,6 @@
 # Shiki Highlighter Example Js
 
-Shiki code highlighter example in javascript. How to use the modern syntax highlighter Shiki.
+Shiki code highlighter example in javascript. How to use modern syntax highlighter Shiki.
 
 ## Code
 
