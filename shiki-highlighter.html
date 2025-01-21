@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laravel validation </title>
+    <title>Shiki Highlighter Example</title>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=VT323&display=swap');
@@ -18,17 +18,21 @@
         }
 
         body {
-            padding-inline: 50px;
-            color: #000;
+            padding: 0;
+            margin: 0;
+            color: #111;
             background: #fff;
+            font-size: 20px;
             font-family: Poppins, monospace;
+            box-sizing: border-box;
         }
 
         h1 {
             float: left;
             width: 100%;
             font-size: 40px;
-            margin-top: 50px;
+            margin-top: 60px;
+            box-sizing: border-box;
         }
 
         p {
@@ -44,7 +48,7 @@
             font-weight: 300;
             letter-spacing: 1px;
             color: #fff;
-            background: #131313;
+            background: #222;
             border-radius: 15px;
             padding: 10px 15px;
             border: none;
@@ -55,7 +59,7 @@
             float: left;
             width: 100%;
             border-radius: 5px;
-            border: 10px solid #fbfbfb;
+            border: 1px solid #f9f9f9;
         }
 
         code {
@@ -65,10 +69,10 @@
             padding: 20px;
             box-sizing: border-box;
             border-radius: 5px;
+            font-size: 16px;
             font-family: "VT323", system-ui;
             font-family: "JetBrains Mono", consolas, system-ui;
-            background-color: #dbd7ca66;
-            /* background-color: #f6f6f6; */
+            background-color: #f1efea;
             overflow: auto;
             scrollbar-width: thin;
         }
@@ -98,6 +102,61 @@
             /* font-style: var(--shiki-font-style) !important;
             font-weight: var(--shiki-font-weight) !important;
             text-decoration: var(--shiki-text-decoration) !important; */
+        }
+
+        .link-color {
+            color: #FD6E41;
+            color: #80A665;
+        }
+
+        .blog-header {
+            float: left;
+            width: 100%;
+            padding: 20px 0px;
+            color: #fff;
+            background: #2451A3;
+            background: #F06725;
+            background: #fdc50a;
+            background: #FBDC9E;
+            background: #01CD45;
+            background: #FD6E41;
+            background: #80A665;
+            /* #BAD4DB; #F9B396 */
+            text-align: center;
+        }
+
+        .blog-desc {
+            color: #000;
+        }
+
+        .blog-wrapper {
+            float: left;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .blog-content {
+            margin: 50px auto;
+            width: 90%;
+            max-width: 900px;
+        }
+
+        .codecopy {
+            position: absolute;
+            top: 25px;
+            right: 5px;
+            font-size: 13px;
+            padding: 5px 10px;
+            color: #fff;
+            background: #80A665;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .codebox {
+            position: relative;
+            float: left;
+            width: 100%;
         }
     </style>
 
@@ -135,22 +194,48 @@
 </head>
 
 <body>
-    <!-- <button onclick="document.body.classList.toggle('dark')" class="btn-toggle">Toggle Dark</button> -->
-    <button onclick="toggleTheme()" class="btn-toggle">Toggle Theme</button>
+    <div class="blog-header">
+        <h1>Stop on First Validation Error</h1>
+        <p class="blog-desc">How to get only first error from request validation in Laravel.</p>
+    </div>
+    <div class="blog-wrapper">
+        <div class="blog-content">
+            <p>By default, Laravel validation errors will be returned in a list, checking all validation rules. But if you want the process to stop after the first error, use validation rule called <b>bail</b>:</p>
+            <div id="c1" class="codebox"></div>
 
-    <h1>How to get the first error from Request Validation in Laravel</h1>
+            <p>If you need to stop validation on the first error in FormRequest class, you can set <b>stopOnFirstFailure</b> property to <b>true</b> and overwrite function <b>failedValidation()</b>:</p>
+            <div id="c2" class="codebox"></div>
 
-    <p>Jeżeli chcesz wyświetlić tylko pojedyńczy błąd walidacji danych wejściowych użyj parametru bail.</p>
-    <div id="c1"></div>
+            <p>Use SampleRequest in Controller:</p>
+            <div id="c3" class="codebox"></div>
 
-    <p>Wyświetlaj tylko pojedyńczy błąd walidacji z FormRequest.</p>
-    <div id="c2"></div>
+            <p>Create route for controller:</p>
+            <div id="c4" class="codebox"></div>
+
+            <p>Create avatar upload form:</p>
+            <div id="c5" class="codebox"></div>
+
+            <p>Create upload script csrf_token in form field:</p>
+            <div id="c6" class="codebox"></div>
+
+            <p>Create upload script csrf_token in headers:</p>
+            <div id="c7" class="codebox"></div>
+
+            <button onclick="toggleTheme()" class="btn-toggle">Toggle Theme</button>
+
+            <p>
+                More themes here <a href="https://textmate-grammars-themes.netlify.app/?theme=github-light&grammar=javascript" target="_blank" class="link-color"><strong>Shiki Themes</strong></a>
+            </p>
+        </div>
+    </div>
 
     <script type="module">
         import { codeToHtml } from 'https://esm.sh/shiki@v2.0.1'
 
         async function textToCode(code, id = 'c1', lang = 'php') {
-            document.getElementById(id).innerHTML = await codeToHtml(code, {
+            // Highlight
+            let el = document.getElementById(id)
+            el.innerHTML = await codeToHtml(code, {
                 lang: lang,
                 themes: {
                     light: 'vitesse-light',
@@ -159,8 +244,19 @@
                 },
                 defaultColor: 'light',
             });
-        }
 
+            // Copy to clipboard
+            let cp = document.createElement("div")
+            cp.classList.add('codecopy')
+            cp.innerText = 'copy'
+            cp.dataset.code = code
+            cp.addEventListener('click', () => {
+                let c = cp.dataset.code
+                navigator.clipboard.writeText(c)
+                alert('Copied to clipboard')
+            })
+            el.appendChild(cp)
+        }
 
         textToCode(`<?php
 
@@ -168,7 +264,7 @@ class UserController extends Controller {
 
     public function uploadAvatar(Request $request) {
         $request->validate([
-            'avatar' => 'bail|required|image|mimes:png|max:2048|dimensions:max_width=256,max_height=256',
+            'avatar' => 'bail|required|image|mimes:png,webp|max:2048|dimensions:max_width=256,max_height=256',
         ]);
     }
 }`, 'c1', 'php');
@@ -176,23 +272,195 @@ class UserController extends Controller {
 
         textToCode(`<?php
 
-class UploadRequest extends FormRequest {
+namespace App\\Http\\Requests;
 
+use Illuminate\\Contracts\\Validation\\Validator;
+use Illuminate\\Foundation\\Http\\FormRequest;
+use Illuminate\\Support\\Facades\\Auth;
+use Illuminate\\Validation\\ValidationException;
+use Illuminate\\Validation\\Rule;
+use Illuminate\\Validation\\Rules\\Password;
+
+class SampleRequest extends FormRequest {
+
+    // Only first error for field
     protected $stopOnFirstFailure = true;
 
+    // Display only one error without errors if $stopOnFirstFailure does not work
+    public function failedValidation(Validator $validator) {
+        throw new ValidationException($validator, response()->json([
+            'message' => $validator->errors()->first()
+        ], 422));
+    }
+
+    // Authorize user with request
     public function authorize() {
         return true; // Allow all
+        // return Auth::check(); // Only logged users
+        // return $this->user()->isAdmin(); // Only admin
     }
 
+    // Validation rules
     public function rules() {
+
+        $email = 'email:rfc,dns';
+
+        if (env('APP_DEBUG') == true) {
+            $email = 'email';
+        }
+
         return [
             'avatar' => 'required|image|mimes:png|max:2048|dimensions:max_width=512,max_height=512',
+            'name' => [
+                'required', 'min:3', 'max:50'
+            ],
+            'email' => [
+                'required', $email, 'max:161',
+                Rule::unique('users')
+                // Rule::unique('users')->whereNull('deleted_at')
+            ],
+            'password' => [
+                'required',
+                'max:50',
+                Password::min(11)->letters()->mixedCase()->numbers()->symbols(),
+                'confirmed',
+            ],
+            'password_confirmation' => 'required'
         ];
     }
-}`, 'c2', 'php');
-    </script>
 
-    <p><a href="https://textmate-grammars-themes.netlify.app/?theme=github-light&grammar=javascript" target="_blank">Theme styles</a></p>
+    // Before validation
+    public function prepareForValidation() {
+        // $this->merge([
+        //     'id' => (string) request()->route('id'),
+        //     'code' => (string) trim(strip_tags(request()->route('code')))
+        // ]);
+
+        // $this->merge(
+        // 	collect(request()->json()->all())->only(['name', 'email', 'password', 'password_confirmation'])->toArray()
+        // );
+    }
+}`, 'c2', 'php');
+
+        textToCode(`<?php
+
+namespace App\Http\Controllers;
+
+use App\\Http\\Requests\\SampleRequest;
+use Illuminate\\Http\\Request;
+use Illuminate\\Support\\Facades\\Storage;
+
+class UserController extends Controller {
+
+    public function uploadAvatar(SampleRequest $request) {
+
+        // For single error use bail
+        $request->validate([
+            'avatar' => 'bail|required|image|mimes:png|max:2048|dimensions:max_width=256,max_height=256',
+        ]);
+
+        $extension = $request->file('avatar')->extension();
+
+        $path = Storage::putFileAs('avatars', $request->file('avatar'), 'avatar-' . $request->user()->id . '.png');
+
+        $url = Storage::url($path);
+
+        return response()->json([
+            'image' => $path,
+            'url' => $url,
+        ]);
+    }
+}`, 'c3', 'php');
+
+        textToCode(`<?php
+
+use App\\Http\\Controllers\\UserController;
+use Illuminate\\Support\\Facades\\Route;
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/panel/upload/avatar', [UserController::class, 'index']);
+    Route::post('/web/api/avatar/upload', [UserController::class, 'uploadAvatar']);)
+});
+
+`, 'c4', 'php');
+
+        textToCode(`<form method="post" enctype="multipart/form-data" onsubmit="getData(event)">
+    <input type="file" name="avatar" />
+    <input type="submit" value="Submit" />
+</form>
+`, 'c5', 'php');
+
+        textToCode(`async function getData(e) {
+    e.preventDefault()
+
+    let response;
+
+    try {
+        const formData = new FormData(e.target)
+        // const formObj = Object.fromEntries(formData);
+        // const entries = [...formData.entries()];
+        // const values = [...formData.values()];
+
+        formData.append('_token', '{{ csrf_token() }}')
+
+        response = await fetch('/web/api/avatar/upload', {
+            method: 'POST',
+            body: formData,
+        });
+
+        if (!response.ok) {
+            const json = await response.json();
+            console.log(json);
+            throw new Error('Response status: ' + response.status);
+        }
+
+        const json = await response.json();
+        console.log(json);
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+`, 'c6', 'javascript');
+
+        textToCode(`async function getData(e) {
+    e.preventDefault()
+
+    let response;
+
+    try {
+        const formData = new FormData(e.target)
+
+        response = await fetch('/web/api/avatar/upload', {
+            method: 'POST',
+            // Upload image and form data
+            body: formData,
+            headers: {
+                'Accept': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            // Send json data
+            // body: JSON.stringify({ username: 'example', email: 'email@example.org' }),
+            // headers: {
+            //     'Accept': 'application/json',
+            //     'Content-Type': 'application/json',
+            //     'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            // }
+        });
+
+        if (!response.ok) {
+            const json = await response.json();
+            console.log(json);
+            throw new Error('Response status: ' + response.status);
+        }
+
+        const json = await response.json();
+        console.log(json);
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+`, 'c7', 'javascript');
+    </script>
 </body>
 
 </html>
