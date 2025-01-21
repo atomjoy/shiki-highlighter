@@ -6,26 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laravel validation </title>
 
-    <script>
-        function decodeHTMLEntities(text) {
-            var textArea = document.createElement('textarea');
-            textArea.innerHTML = text;
-            return textArea.value;
-        }
-
-        function encodeHTMLEntities(text) {
-            var textArea = document.createElement('textarea');
-            textArea.innerText = text;
-            return textArea.innerHTML;
-        }
-    </script>
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=VT323&display=swap');
 
         :root {
+            /* does not metter here plugin get it from theme style */
             --shiki-dark: #dbd7ca;
             --shiki-dark-bg: #131313;
+            --shiki-dim: #2e3440;
+            --shiki-dim-bg: #131313;
         }
 
         body {
@@ -90,23 +79,64 @@
         }
 
         body.dark .shiki,
-        body.dark .shiki span {
+        body.dark .shiki span,
+        body.dark code {
             color: var(--shiki-dark) !important;
             background-color: var(--shiki-dark-bg) !important;
 
-            font-style: var(--shiki-dark-font-style) !important;
-            font-weight: var(--shiki-dark-font-weight) !important;
-            text-decoration: var(--shiki-dark-text-decoration) !important;
+            /* font-style: var(--shiki-font-style) !important;
+            font-weight: var(--shiki-font-weight) !important;
+            text-decoration: var(--shiki-text-decoration) !important; */
         }
 
-        body.dark code {
-            background-color: var(--shiki-dark-bg) !important;
+        body.dim .shiki,
+        body.dim .shiki span,
+        body.dim code {
+            color: var(--shiki-dim) !important;
+            background-color: var(--shiki-dim-bg) !important;
+
+            /* font-style: var(--shiki-font-style) !important;
+            font-weight: var(--shiki-font-weight) !important;
+            text-decoration: var(--shiki-text-decoration) !important; */
         }
     </style>
+
+    <script>
+        function decodeHTMLEntities(text) {
+            var textArea = document.createElement('textarea');
+            textArea.innerHTML = text;
+            return textArea.value;
+        }
+
+        function encodeHTMLEntities(text) {
+            var textArea = document.createElement('textarea');
+            textArea.innerText = text;
+            return textArea.innerHTML;
+        }
+
+        let theme = 'light'
+
+        function toggleTheme() {
+            document.body.classList.remove('light')
+            document.body.classList.remove('dark')
+            document.body.classList.remove('dim')
+
+            if (theme == 'dim') {
+                theme = 'light'
+            } else if (theme == 'dark') {
+                theme = "dim"
+            } else if (theme == 'light') {
+                theme = "dark"
+            }
+
+            document.body.classList.add(theme)
+        }
+    </script>
 </head>
 
 <body>
-    <button onclick="document.body.classList.toggle('dark')" class="btn-toggle">Toggle theme</button>
+    <!-- <button onclick="document.body.classList.toggle('dark')" class="btn-toggle">Toggle Dark</button> -->
+    <button onclick="toggleTheme()" class="btn-toggle">Toggle Theme</button>
 
     <h1>How to get the first error from Request Validation in Laravel</h1>
 
@@ -118,15 +148,14 @@
 
     <script type="module">
         import { codeToHtml } from 'https://esm.sh/shiki@v2.0.1'
-        // import { codeToHtml } from 'https://esm.run/shiki@v2.0.1'
 
         async function textToCode(code, id = 'c1', lang = 'php') {
             document.getElementById(id).innerHTML = await codeToHtml(code, {
                 lang: lang,
-                // theme: 'vitesse-light',
                 themes: {
                     light: 'vitesse-light',
-                    dark: 'vitesse-dark'
+                    dark: 'vitesse-dark',
+                    dim: 'everforest-dark',
                 },
                 defaultColor: 'light',
             });
