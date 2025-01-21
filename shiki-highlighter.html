@@ -21,7 +21,8 @@
             padding: 0;
             margin: 0;
             color: #111;
-            background: #fff;
+            background: #FAF1C8;
+            background: #EBDBB3;
             font-size: 20px;
             font-family: Poppins, monospace;
             box-sizing: border-box;
@@ -58,9 +59,14 @@
         pre {
             float: left;
             width: 100%;
+            padding: 5px;
             margin-block: 0px;
-            border-radius: 5px;
-            border: 1px solid #f9f9f9;
+            background-color: #F1E6BC !important;
+            border: 1px solid #A65E2B;
+            border: 1px solid #2D2C2A;
+            border-radius: 0px 0px 5px 5px;
+            box-sizing: border-box;
+            overflow: hidden;
         }
 
         code {
@@ -68,13 +74,19 @@
             width: 100%;
             padding: 20px;
             box-sizing: border-box;
-            border-radius: 5px;
+            border-radius: 0px 0px 5px 5px;
             font-size: 15px;
             font-family: "VT323", system-ui;
             font-family: "JetBrains Mono", consolas, system-ui;
             background-color: #f1efea;
+            background-color: #FBF1C7;
+            background-color: #FAF1C8;
+            background-color: #F0E9BF;
+            background-color: #F1E6BC;
             overflow: auto;
             scrollbar-width: thin;
+            scrollbar-color: #DBBC7F #ebdbb3;
+
         }
 
         .shiki {
@@ -117,18 +129,25 @@
             text-align: center;
             color: #fff;
             background: #2451A3;
+            background: #315AAE;
+            background: #3155D2;
             background: #01CD45;
             background: #F9B396;
-            background: #F06725;
-            background: #FD6E41;
             background: #BAD4DB;
             background: #80A665;
+            background: #708451;
+            background: #E5D6AF;
+            background: #F06725;
+            background: #FE8019;
+            background: #FD6E41;
             background: #fdc50a;
             background: #ffa200;
+            background: #30282B;
         }
 
         .blog-desc {
-            color: #000;
+            color: #131313;
+            color: #A3A3A1;
         }
 
         .blog-wrapper {
@@ -145,10 +164,11 @@
 
         .codecopy {
             position: absolute;
-            top: 10px;
+            top: 5px;
             right: 5px;
+            height: 20px;
             font-size: 13px;
-            padding: 5px 10px;
+            padding: 5px;
             color: #fff;
             background: #80A665;
             border-radius: 5px;
@@ -160,8 +180,24 @@
             float: left;
             width: 100%;
             min-height: 100px;
-            background: #f6f6f6;
-            border-radius: 5px;
+            background-color: #F1E6BC;
+            border-radius: 0px 0px 5px 5px;
+        }
+
+        .code-file {
+            position: relative;
+            float: left;
+            width: 100%;
+            padding: 5px 10px;
+            margin-bottom: 0px;
+            color: #fff;
+            background: #80A665;
+            background: #B8A965;
+            background: #2D2C2A;
+            border-radius: 5px 5px 0px 0px;
+            font-size: 13px;
+            font-family: 'Fira Code';
+            box-sizing: border-box;
         }
     </style>
 
@@ -205,25 +241,32 @@
     </div>
     <div class="blog-wrapper">
         <div class="blog-content">
-            <p>By default, Laravel validation errors will be returned in a list, checking all validation rules. But if you want the process to stop after the first error, use validation rule called <b>bail</b>:</p>
+            <p>By default, Laravel validation errors will be returned in a list, checking all validation rules. But if you want the process to stop after the first error, use validation rule called <b>bail</b> and remove <b>(and 1 more error)</b> from error message:</p>
+            <div class="code-file">UserController.php</div>
             <div id="c1" class="codebox"></div>
 
             <p>If you need to stop validation on the first error in FormRequest class, you can set <b>stopOnFirstFailure</b> property to <b>true</b> and overwrite function <b>failedValidation()</b>:</p>
+            <div class="code-file">SampleRequest.php</div>
             <div id="c2" class="codebox"></div>
 
             <p>Use SampleRequest in Controller:</p>
+            <div class="code-file">UserController.php</div>
             <div id="c3" class="codebox"></div>
 
             <p>Create route for controller:</p>
+            <div class="code-file">router.php</div>
             <div id="c4" class="codebox"></div>
 
             <p>Create avatar upload form:</p>
+            <div class="code-file">upload.blade.php</div>
             <div id="c5" class="codebox"></div>
 
             <p>Create upload script csrf_token in form field:</p>
+            <div class="code-file">javascript</div>
             <div id="c6" class="codebox"></div>
 
             <p>Create upload script csrf_token in headers:</p>
+            <div class="code-file">javascript</div>
             <div id="c7" class="codebox"></div>
 
             <button onclick="toggleTheme()" class="btn-toggle">Toggle Theme</button>
@@ -253,7 +296,9 @@
             // Copy to clipboard
             let cp = document.createElement("div")
             cp.classList.add('codecopy')
-            cp.innerText = 'copy'
+            // cp.innerText = 'copy'
+            // cp.src = `https://www.svgrepo.com/show/3110/copy.svg`
+            cp.innerHTML = `<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V16.5M6.2 21H14.3C15.4201 21 15.9802 21 16.408 20.782C16.7843 20.5903 17.0903 20.2843 17.282 19.908C17.5 19.4802 17.5 18.9201 17.5 17.8V9.7C17.5 8.57989 17.5 8.01984 17.282 7.59202C17.0903 7.21569 16.7843 6.90973 16.408 6.71799C15.9802 6.5 15.4201 6.5 14.3 6.5H6.2C5.0799 6.5 4.51984 6.5 4.09202 6.71799C3.71569 6.90973 3.40973 7.21569 3.21799 7.59202C3 8.01984 3 8.57989 3 9.7V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.0799 21 6.2 21Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`
             cp.dataset.code = code
             cp.addEventListener('click', () => {
                 let c = cp.dataset.code
@@ -263,19 +308,21 @@
             el.appendChild(cp)
         }
 
-        textToCode(`<?php
+        textToCode(`<? php
 
 class UserController extends Controller {
 
     public function uploadAvatar(Request $request) {
-        $request->validate([
+
+        // Stop on first error with bail
+        $request -> validate([
             'avatar' => 'bail|required|image|mimes:png,webp|max:2048|dimensions:max_width=256,max_height=256',
         ]);
     }
-}`, 'c1', 'php');
+} `, 'c1', 'php');
 
 
-        textToCode(`<?php
+        textToCode(`<? php
 
 namespace App\\Http\\Requests;
 
@@ -291,10 +338,10 @@ class SampleRequest extends FormRequest {
     // Only first error for field
     protected $stopOnFirstFailure = true;
 
-    // Display only one error without errors if $stopOnFirstFailure does not work
+    // Display only message error without errors list (or if $stopOnFirstFailure does not work)
     public function failedValidation(Validator $validator) {
-        throw new ValidationException($validator, response()->json([
-            'message' => $validator->errors()->first()
+        throw new ValidationException($validator, response() -> json([
+            'message' => $validator -> errors() -> first()
         ], 422));
     }
 
@@ -302,7 +349,7 @@ class SampleRequest extends FormRequest {
     public function authorize() {
         return true; // Allow all
         // return Auth::check(); // Only logged users
-        // return $this->user()->isAdmin(); // Only admin
+        // return Auth::check() && Auth::user()->hasRole('admin'); // Only logged admin role
     }
 
     // Validation rules
@@ -315,19 +362,19 @@ class SampleRequest extends FormRequest {
         }
 
         return [
-            'avatar' => 'required|image|mimes:png|max:2048|dimensions:max_width=512,max_height=512',
+            'avatar' => 'bail|required|image|mimes:png,webp|max:2048|dimensions:max_width=256,max_height=256',
             'name' => [
                 'required', 'min:3', 'max:50'
             ],
             'email' => [
                 'required', $email, 'max:161',
-                Rule::unique('users')
+                Rule:: unique('users')
                 // Rule::unique('users')->whereNull('deleted_at')
             ],
             'password' => [
                 'required',
                 'max:50',
-                Password::min(11)->letters()->mixedCase()->numbers()->symbols(),
+                Password:: min(11) -> letters() -> mixedCase() -> numbers() -> symbols(),
                 'confirmed',
             ],
             'password_confirmation' => 'required'
@@ -345,9 +392,9 @@ class SampleRequest extends FormRequest {
         // 	collect(request()->json()->all())->only(['name', 'email', 'password', 'password_confirmation'])->toArray()
         // );
     }
-}`, 'c2', 'php');
+} `, 'c2', 'php');
 
-        textToCode(`<?php
+        textToCode(`<? php
 
 namespace App\Http\Controllers;
 
@@ -360,36 +407,38 @@ class UserController extends Controller {
     public function uploadAvatar(SampleRequest $request) {
 
         // For single error use bail
-        $request->validate([
-            'avatar' => 'bail|required|image|mimes:png|max:2048|dimensions:max_width=256,max_height=256',
-        ]);
+        // $request->validate([
+        //    'avatar' => 'bail|required|image|mimes:png|max:2048|dimensions:max_width=256,max_height=256',
+        // ]);
 
-        $extension = $request->file('avatar')->extension();
+        $valid = $request -> validated();
 
-        $path = Storage::putFileAs('avatars', $request->file('avatar'), 'avatar-' . $request->user()->id . '.png');
+        $extension = $request -> file('avatar') -> extension();
 
-        $url = Storage::url($path);
+        $path = Storage:: putFileAs('avatars', $request -> file('avatar'), 'avatar-'.$request -> user() -> id. '.png');
 
-        return response()->json([
+        $url = Storage:: url($path);
+
+        return response() -> json([
             'image' => $path,
             'url' => $url,
         ]);
     }
-}`, 'c3', 'php');
+} `, 'c3', 'php');
 
-        textToCode(`<?php
+        textToCode(`<? php
 
 use App\\Http\\Controllers\\UserController;
 use Illuminate\\Support\\Facades\\Route;
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/panel/upload/avatar', [UserController::class, 'index']);
-    Route::post('/web/api/avatar/upload', [UserController::class, 'uploadAvatar']);)
+Route:: middleware(['auth']) -> group(function () {
+    Route:: get('/panel/upload/avatar', [UserController:: class, 'index']);
+    Route:: post('/web/api/avatar/upload', [UserController:: class, 'uploadAvatar']);)
 });
 
 `, 'c4', 'php');
 
-        textToCode(`<form method="post" enctype="multipart/form-data" onsubmit="getData(event)">
+        textToCode(`<form form form method = "post" enctype = "multipart/form-data" onsubmit = "getData(event)" >
     <input type="file" name="avatar" />
     <input type="submit" value="Submit" />
 </form>
