@@ -1,4 +1,4 @@
-# Shiki Highlighter Example Js
+# Shiki Highlighter JavaScript
 
 Shiki code highlighter example in javascript. How to use modern syntax highlighter Shiki with copy to clipboard.
 
