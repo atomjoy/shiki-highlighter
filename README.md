@@ -2,6 +2,63 @@
 
 Shiki code highlighter example in javascript. How to use modern syntax highlighter Shiki with copy to clipboard.
 
+## Minimal
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+<script type="module">
+import { codeToHtml } from "https://esm.sh/shiki@3.0.0"
+const all = document.querySelectorAll("code")
+all.forEach(async (f) => {
+    console.log(f)
+    let code = f.innerText
+    f.innerHTML = await codeToHtml(code, {lang: "js",theme: "plastic"})
+    // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "synthwave-84"})
+    // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "everforest-dark"})
+    // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "everforest-light"})
+    // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "vitesse-dark"})
+    // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "one-dark-pro"})
+    // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "github-light"})
+    // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "material-theme"})
+    // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "material-theme-darker"})
+    // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "rose-pine"})
+    // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "rose-pine-moon"})
+    // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "rose-pine-dawn"})
+})
+</script>
+
+<style>
+pre {float: left; width: 100%; background: #0f0f00; padding: 5px; border-radius: 3px; box-sizing: border-box;}
+.shiki {margin: 0px; display: inline; box-sizing: border-box; font-family: "JetBrains Mono"; font-size: 16px; padding-inline: 20px; overflow-x: auto; scrollbar-width: thin;}
+.code {font-family: "JetBrains Mono"; background: #222; color: #fd0; padding: 3px; border-radius: 3px}
+</style>
+
+<code>
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
+
+class Application extends Model
+{
+    /**
+     * Get the latest deployment for the application.
+     */
+    public function latestDeployment(): HasOneThrough
+    {
+        return $this->deployments()->one()->latestOfMany();
+    }
+}
+
+?>
+</code>
+```
+
 ## Code
 
 - <https://github.com/atomjoy/shiki-highlighter/blob/main/shiki-highlighter.html>
@@ -230,4 +287,30 @@ class UploadRequest extends FormRequest {
 </body>
 
 </html>
+```
+
+## Custom theme
+
+```js
+const myTheme = {
+  name: 'my-theme',
+  settings: [
+    {
+      scope: ['keyword', 'storage.type'],
+      settings: { foreground: '#FD8DA3' }
+    },
+    {
+      scope: ['string', 'entity.name.tag'],
+      settings: { foreground: '#77D5A3' }
+    },
+    {
+      scope: ['entity.name.function', 'entity.name'],
+      settings: { foreground: '#BD9CFE' }
+    },
+    {
+      scope: ['variable'],
+      settings: { foreground: '#92A9FF' }
+    },
+  ]
+}
 ```
