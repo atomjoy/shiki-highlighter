@@ -6,6 +6,8 @@ Code syntax highlighting with Shiki highlighter in JavaScript and Vue 3 with CDN
 
 - <https://github.com/atomjoy/shiki-highlighter/blob/main/shiki-mini.html>
 
+<img src="https://raw.githubusercontent.com/atomjoy/shiki-highlighter/refs/heads/main/shiki-highlighter-mini.png" sidth="100%">
+
 ### Js Vue 3 CDN
 
 ```html
