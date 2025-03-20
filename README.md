@@ -37,7 +37,7 @@ pre {float: left; width: 100%; background: #0f0f00; padding: 5px; border-radius:
 </style>
 
 <code>
-<?php
+&lt?php
 
 namespace App\Models;
 
@@ -55,7 +55,7 @@ class Application extends Model
     }
 }
 
-?>
+?&gt
 </code>
 ```
 
