@@ -4,6 +4,8 @@ Code highlighting with Shiki in JavaScript and Vue 3.
 
 ## Minimal
 
+- <https://github.com/atomjoy/shiki-highlighter/blob/main/shiki-mini.html>
+
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,11 +99,9 @@ class Application extends Model
 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe fugit quidem facilis exercitationem veritatis suscipit totam blanditiis magnam, nam amet eius sit aperiam pariatur minima animi expedita. Sunt, nemo repudiandae! <span class="code">.active{color: #f25; padding: 10px 20px;}</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt tempore laborum labore pariatur repellendus quasi aut rerum corporis! Quod asperiores harum architecto vitae, rerum cupiditate culpa? Quia impedit quibusdam reiciendis!</p>
 ```
 
-## Code
+## Toggle theme
 
 - <https://github.com/atomjoy/shiki-highlighter/blob/main/shiki-highlighter.html>
-
-## Toggle theme
 
 <img src="https://raw.githubusercontent.com/atomjoy/shiki-highlighter/main/shiki-highlighter.png" width="100%">
 <img src="https://raw.githubusercontent.com/atomjoy/shiki-highlighter/main/shiki-highlighter-dark.png" width="100%">
