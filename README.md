@@ -14,65 +14,64 @@ Code syntax highlighting with Shiki highlighter in JavaScript and Vue 3 with CDN
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
 <script type="module">
-    import { codeToHtml } from "https://esm.sh/shiki@3.0.0"
-    const all = document.querySelectorAll("code")
-    all.forEach(async (f) => {
-        console.log(f)
-        let code = f.innerText
-        f.innerHTML = await codeToHtml(code, { lang: "js", theme: "plastic" })
-        // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "synthwave-84"})
-        // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "everforest-dark"})
-        // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "everforest-light"})
-        // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "vitesse-dark"})
-        // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "one-dark-pro"})
-        // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "github-light"})
-        // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "material-theme"})
-        // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "material-theme-darker"})
-        // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "rose-pine"})
-        // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "rose-pine-moon"})
-        // f.innerHTML = await codeToHtml(code, {lang: "js",theme: "rose-pine-dawn"})
-    })
+	import { codeToHtml } from "https://esm.sh/shiki@3.0.0"
+	const all = document.querySelectorAll("code")
+	all.forEach(async (f) => {
+		const theme = [
+			"everforest-dark", "everforest-light", "vitesse-dark", "github-light", "plastic",
+			"one-dark-pro", "synthwave-84", "material-theme", "material-theme-darker",
+			"rose-pine", "rose-pine-moon", "rose-pine-dawn"
+		]
+		let code = f.innerText
+		f.innerHTML = await codeToHtml(code, { lang: "js", theme: theme[0] })
+	})
 </script>
 
 <style>
-    p {
-        font-size: 16px;
-        font-family: Poppins;
-    }
+	h1 {
+		font-family: Poppins;
+	}
 
-    pre {
-        float: left;
-        width: 100%;
-        padding: 5px;
-        border-radius: 3px;
-        box-sizing: border-box;
-        background: #0f0f0f;
-    }
+	p {
+		font-size: 16px;
+		font-family: Poppins;
+	}
 
-    code {
-        font-family: "JetBrains Mono";
-    }
+	pre {
+		float: left;
+		width: 100%;
+		padding: 5px;
+		border-radius: 3px;
+		box-sizing: border-box;
+		background: #0f0f0f;
+	}
 
-    .shiki {
-        margin: 0px;
-        display: inline;
-        box-sizing: border-box;
-        font-family: "JetBrains Mono";
-        font-size: 16px;
-        padding-inline: 20px;
-        overflow-x: auto;
-        scrollbar-width: thin;
-        /* background: #222221 !important; */
-    }
+	code {
+		font-family: "JetBrains Mono";
+	}
 
-    .code {
-        font-family: "JetBrains Mono";
-        background: #21252b;
-        color: #E5C07B;
-        padding: 3px;
-        border-radius: 3px
-    }
+	.shiki {
+		margin: 0px;
+		display: inline;
+		box-sizing: border-box;
+		font-family: "JetBrains Mono";
+		font-size: 16px;
+		padding-inline: 20px;
+		overflow-x: auto;
+		scrollbar-width: thin;
+		/* background: #222221 !important; */
+	}
+
+	.code {
+		font-family: "JetBrains Mono";
+		background: #21252b;
+		color: #E5C07B;
+		padding: 3px;
+		border-radius: 3px
+	}
 </style>
+
+<h1>Shiki Highlighter</h1>
 
 <pre>
 <code>
@@ -95,10 +94,11 @@ class Application extends Model
 }
 
 ?&gt
+
 </code>
 </pre>
 
-<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe fugit quidem facilis exercitationem veritatis suscipit totam blanditiis magnam, nam amet eius sit aperiam pariatur minima animi expedita. Sunt, nemo repudiandae! <span class="code">.active{color: #f25; padding: 10px 20px;}</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt tempore laborum labore pariatur repellendus quasi aut rerum corporis! Quod asperiores harum architecto vitae, rerum cupiditate culpa? Quia impedit quibusdam reiciendis!</p>
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe fugit quidem facilis exercitationem veritatis suscipit totam blanditiis magnam, nam amet eius sit aperiam pariatur minima animi expedita. Sunt, nemo repudiandae!<span class="code">.active{color: #f25; padding: 10px 20px;}</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt tempore laborum labore pariatur repellendus quasi aut rerum corporis! Quod asperiores harum architecto vitae, rerum cupiditate culpa? Quia impedit quibusdam reiciendis!</p>
 ```
 
 ## Toggle theme
