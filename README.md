@@ -1,6 +1,6 @@
 # Shiki Highlighter JavaScript Vue3
 
-Code syntax highlighting with Shiki highlighter in JavaScript and Vue 3 with CDN.
+Code syntax highlighting with Shiki highlighter in JavaScript and Vue 3 with CDN (line numbers css).
 
 ## Minimal
 
@@ -24,6 +24,7 @@ Code syntax highlighting with Shiki highlighter in JavaScript and Vue 3 with CDN
 		]
 		let code = f.innerText
 		f.innerHTML = await codeToHtml(code, { lang: "js", theme: theme[0] })
+
 	})
 </script>
 
@@ -56,7 +57,7 @@ Code syntax highlighting with Shiki highlighter in JavaScript and Vue 3 with CDN
 		box-sizing: border-box;
 		font-family: "JetBrains Mono";
 		font-size: 16px;
-		padding-inline: 20px;
+		padding: 0px 10px 0px 10px;
 		overflow-x: auto;
 		scrollbar-width: thin;
 		/* background: #222221 !important; */
@@ -68,6 +69,27 @@ Code syntax highlighting with Shiki highlighter in JavaScript and Vue 3 with CDN
 		color: #E5C07B;
 		padding: 3px;
 		border-radius: 3px
+	}
+
+	/* Line numbers css */
+
+	pre {
+		counter-reset: line;
+	}
+
+	.line {
+		counter-increment: line;
+	}
+
+	.line:before {
+		float: left;
+		content: counter(line);
+		margin-right: 10px;
+		width: 35px;
+	}
+
+	.line:before {
+		--webkit-user-select: none;
 	}
 </style>
 
@@ -94,7 +116,6 @@ class Application extends Model
 }
 
 ?&gt
-
 </code>
 </pre>
 
