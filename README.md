@@ -1,12 +1,12 @@
 # Shiki Highlighter JavaScript Vue3
 
-Code highlighting with Shiki in JavaScript and Vue 3.
+Code syntax highlighting with Shiki highlighter in JavaScript and Vue 3 with CDN.
 
 ## Minimal
 
 - <https://github.com/atomjoy/shiki-highlighter/blob/main/shiki-mini.html>
 
-### Js Vue 3
+### Js Vue 3 CDN
 
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
