@@ -6,6 +6,8 @@ Code highlighting with Shiki in JavaScript and Vue 3.
 
 - <https://github.com/atomjoy/shiki-highlighter/blob/main/shiki-mini.html>
 
+### Js Vue 3
+
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
