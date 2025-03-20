@@ -78,7 +78,12 @@ Code syntax highlighting with Shiki highlighter in JavaScript and Vue 3 with CDN
 	}
 
 	.line {
+		padding: 3px;
 		counter-increment: line;
+		/* Line bottom border */
+		float: left;
+		width: 100%;
+		border-bottom: 1px solid #343c43;
 	}
 
 	.line:before {
@@ -86,6 +91,7 @@ Code syntax highlighting with Shiki highlighter in JavaScript and Vue 3 with CDN
 		content: counter(line);
 		margin-right: 10px;
 		width: 35px;
+		color: #666;
 	}
 
 	.line:before {
@@ -119,7 +125,7 @@ class Application extends Model
 </code>
 </pre>
 
-<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe fugit quidem facilis exercitationem veritatis suscipit totam blanditiis magnam, nam amet eius sit aperiam pariatur minima animi expedita. Sunt, nemo repudiandae!<span class="code">.active{color: #f25; padding: 10px 20px;}</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt tempore laborum labore pariatur repellendus quasi aut rerum corporis! Quod asperiores harum architecto vitae, rerum cupiditate culpa? Quia impedit quibusdam reiciendis!</p>
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.<span class="code">.active{color: #f25; padding: 10px 20px;}</span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 ```
 
 ## Toggle theme
