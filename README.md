@@ -1,8 +1,14 @@
-# Shiki Highlighter JavaScript Vue3
+# Shiki Highlighter Vue3 Typescript
 
 Code syntax highlighting with Shiki highlighter in JavaScript and Vue 3 with CDN (line numbers css).
 
-## Vue3 Ts
+## Vue3 Ts Install shiki
+
+```sh
+npm install -D shiki
+```
+
+### Create ts function
 
 ```ts
 // Types.ts
@@ -49,8 +55,8 @@ onMounted(async () => {
     loadShiki();
 });
 </script>
-
 <template>
+	<h1>{{ item.title }}</h1>
 	<div v-html="markdown"></div>
 </template>
 ```
