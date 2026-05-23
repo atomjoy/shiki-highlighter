@@ -2,7 +2,60 @@
 
 Code syntax highlighting with Shiki highlighter in JavaScript and Vue 3 with CDN (line numbers css).
 
-## Minimal
+## Vue3 Ts
+
+```ts
+// Types.ts
+import { createHighlighter } from 'shiki';
+
+export async function loadShiki() {
+    const highlighter = await createHighlighter({
+        themes: ['vitesse-light', 'github-light'],
+        langs: ['php', 'javascript', 'vue'],
+    });
+    // await highlighter.loadLanguage('javascript');
+    const el = document.querySelectorAll('pre code');
+    el.forEach((f: any) => {
+        const theme = ['vitesse-light', 'github-light'];
+        f.innerHTML = highlighter.codeToHtml(f.innerText, {
+            lang: 'php',
+            theme: theme[0],
+        });
+    });
+}
+```
+
+### Vue3 Template
+
+```vue
+<script setup lang="ts">
+import { computed, onMounted } from 'vue';
+import { Head, Link } from '@inertiajs/vue3';
+import { loadShiki } from '@/types/components';
+
+const props = withDefaults(
+    defineProps<{
+        data: any | null;
+        markdown: any | null;
+    }>(),
+    {
+        data: null,
+    },
+);
+
+const item = computed(() => props.data);
+
+onMounted(async () => {
+    loadShiki();
+});
+</script>
+
+<template>
+	<div v-html="markdown"></div>
+</template>
+```
+
+## Minimal CDN
 
 - <https://github.com/atomjoy/shiki-highlighter/blob/main/shiki-mini.html>
 
@@ -16,20 +69,25 @@ Code syntax highlighting with Shiki highlighter in JavaScript and Vue 3 with CDN
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
 <script type="module">
-	import { codeToHtml } from "https://esm.sh/shiki@3.2.1"
-	const all = document.querySelectorAll("code")
-	all.forEach(async (f) => {
-		const theme = [
-			"everforest-dark", "everforest-light", "vitesse-dark", "github-light",
-			"gruvbox-dark-medium", "gruvbox-dark-soft", "gruvbox-light-soft", "laserwave",
-			"slack-ochin", "plastic", "kanagawa-dragon", "kanagawa-wave", "vitesse-light",
-			"one-dark-pro", "synthwave-84", "material-theme", "material-theme-darker",
-			"rose-pine", "rose-pine-moon", "rose-pine-dawn"
-		]
-		let code = f.innerText
-		f.innerHTML = await codeToHtml(code, { lang: "js", theme: theme[0] })
+import { codeToHtml } from "https://esm.sh/shiki@3.2.1"
 
-	})
+document.addEventListener('DOMContentLoaded', (event) => {
+	setTimeout(() => {
+		const all = document.querySelectorAll("code")
+		all.forEach(async (f) => {
+			const theme = [
+				"everforest-dark", "everforest-light", "vitesse-dark", "github-light",
+				"gruvbox-dark-medium", "gruvbox-dark-soft", "gruvbox-light-soft", "laserwave",
+				"slack-ochin", "plastic", "kanagawa-dragon", "kanagawa-wave", "vitesse-light",
+				"one-dark-pro", "synthwave-84", "material-theme", "material-theme-darker",
+				"rose-pine", "rose-pine-moon", "rose-pine-dawn"
+			]
+			let code = f.innerText
+			f.innerHTML = await codeToHtml(code, { lang: "js", theme: theme[0] })
+	
+		})
+	}, 1000);
+});
 </script>
 
 <style>
