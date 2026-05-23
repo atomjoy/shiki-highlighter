@@ -46,6 +46,7 @@ const props = withDefaults(
     }>(),
     {
         data: null,
+		markdown: null,
     },
 );
 
