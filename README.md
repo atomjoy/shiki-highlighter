@@ -8,7 +8,7 @@ Code syntax highlighting with Shiki highlighter in JavaScript and Vue 3 with CDN
 npm install -D shiki
 ```
 
-### Create ts function
+### Create ts function (with chunk warning)
 
 ```ts
 // Types.ts
@@ -29,6 +29,127 @@ export async function loadShiki() {
         });
     });
 }
+```
+
+### Minimal (no warnings)
+
+```sh
+import { createHighlighterCore } from 'shiki/core';
+import { createJavaScriptRegexEngine } from 'shiki/engine/javascript';
+// Chunk warning !!!
+import { createOnigurumaEngine } from 'shiki/engine/oniguruma';
+
+// Static import dont use import()
+import langPhp from '@shikijs/langs/php';
+import langJs from '@shikijs/langs/javascript';
+import langVue from '@shikijs/langs/vue';
+import langCss from '@shikijs/langs/css';
+import langHtml from '@shikijs/langs/html';
+
+// Static import themes
+import themeVitesse from '@shikijs/themes/vitesse-light';
+import themeGithub from '@shikijs/themes/github-light';
+import themeForest from '@shikijs/themes/everforest-dark';
+import themeDracula from '@shikijs/themes/dracula';
+
+export async function loadShiki() {
+    const highlighter = await createHighlighterCore({
+        themes: [themeVitesse, themeGithub, themeForest, themeDracula],
+        langs: [langPhp, langJs, langVue, langCss, langHtml],
+        engine: createJavaScriptRegexEngine(), // Czunk split ok
+        // engine: createOnigurumaEngine(() => import('shiki/wasm')), // Chunk warning !!!
+    });
+
+    const el = document.querySelectorAll('pre code');
+    el.forEach((f: any) => {
+        const theme = [
+            'vitesse-light',
+            'github-light',
+            'everforest-dark',
+            'dracula',
+        ];
+        f.innerHTML = highlighter.codeToHtml(f.innerText, {
+            lang: 'php',
+            theme: theme[0],
+            defaultColor: false,
+        });
+    });
+}
+```
+
+### Vite shiki chunks in Laravel 13, Vue3, Inertia (no warnings)
+
+```js
+import inertia from '@inertiajs/vite';
+import { wayfinder } from '@laravel/vite-plugin-wayfinder';
+import tailwindcss from '@tailwindcss/vite';
+import vue from '@vitejs/plugin-vue';
+import laravel from 'laravel-vite-plugin';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: ['resources/css/app.css', 'resources/js/app.ts'],
+            refresh: true,
+        }),
+        inertia(),
+        tailwindcss(),
+        vue({
+            template: {
+                transformAssetUrls: {
+                    base: null,
+                    includeAbsolute: false,
+                },
+            },
+        }),
+        wayfinder({
+            formVariants: true,
+        }),
+    ],
+    build: {
+        emptyOutDir: true,
+        // Disable warning for files larger than 500kb and remove rollupOptions.
+        // chunkSizeWarningLimit: 2048,
+        rollupOptions: {
+            output: {
+                manualChunks(id) {
+                    if (!id.includes('node_modules')) return;
+
+                    // Shiki
+                    if (id.includes('@shikijs/langs/')) {
+                        const langName = id.split('/').pop().split('.')[0];
+                        return `lang-${langName}`;
+                    }
+                    if (id.includes('@shikijs/themes/')) {
+                        const themeName = id.split('/').pop().split('.')[0];
+                        return `theme-${themeName}`;
+                    }
+                    if (
+                        id.includes('node_modules/shiki') ||
+                        id.includes('@shikijs/core')
+                    ) {
+                        return 'shiki-core';
+                    }
+
+                    // Frameworki
+                    if (
+                        id.includes('node_modules/vue') ||
+                        id.includes('@vue')
+                    ) {
+                        return 'vue-core';
+                    }
+                    if (id.includes('@inertiajs')) {
+                        return 'inertia';
+                    }
+
+                    // Helpers
+                    return 'vendor-helpers';
+                },
+            },
+        },
+    },
+});
 ```
 
 ### Vue3 Template
