@@ -33,7 +33,7 @@ export async function loadShiki() {
 
 ### Minimal (no warnings)
 
-```sh
+```ts
 import { createHighlighterCore } from 'shiki/core';
 import { createJavaScriptRegexEngine } from 'shiki/engine/javascript';
 // Chunk warning !!!
